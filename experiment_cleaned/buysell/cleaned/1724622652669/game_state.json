@@ -1,0 +1,791 @@
+{
+  "class": "BuySellGame",
+  "run_epoch_time_ms": "1724622652669",
+  "players": [
+    {
+      "class": "ChatGPTAgent",
+      "model": "gpt-4-1106-preview",
+      "agent_name": "Player RED",
+      "prompt_entity_initializer": "system",
+      "run_epoch_time_ms": "1724622652656",
+      "conversation": [
+        {
+          "role": "system",
+          "content": "You are playing game where you are buying or selling an object. There is only one object for sale/purcahse.\n\nPlayer RED is going to sell one object. Player BLUE gives ZUP to buy resources.\n\nRULES:\n\n```\n1. You must always respond with:\n\n    A) Propose a trade with (you can only trade in integer amounts, not decimals):\n    <player answer> PROPOSAL </player answer>\n    <newly proposed trade> Player RED Gives X: amount, ...| Player BLUE Gives ZUP: amount </newly proposed trade>\n\n    B) Accept the trade by saying:\n    <player answer> ACCEPT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    C) Reject and end the game:\n    <player answer> REJECT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    Note: The game will end if one of the players ACCEPT OR REJECT. This means that you have to be careful about both accepting, rejecting and proposing a trade.\n\n2. You are allowed at most 4 proposals of your own to complete the game, after which you can only reply with ACCEPT or REJECT.\nDO NOT propose a new trade after 4 proposals. Your limit for proposals is 4.\n\n3. You can reason step by step on why you are A) proposing, B) rejecting and C) accepting a trade with:\n\n<reason> [add reasoning] </reason> add as much text as you want\n\nThis information will not be sent to the other player. It is just for you to keep track of your reasoning.\n\n4. At each turn send messages to each other by using the following format:\n\n<message>your message here</message>\n\nYou can decide if you want disclose your resources, goals, cost and willingness to pay in the message.\n```\n\nHere is what you have access to:\n```\nObject that is being bought/sold: X\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for <ZUP>. It costed X: 40 ZUP to produce the resources </my goals>,\n```\n\nAll the responses you send should contain the following and in this order:\n\n```\n<proposal count> [add here (inclusive of current)] </proposal count>\n<my resources> [add here] </my resources>\n<my goals> [add here] </my goals>\n<reason> [add here] </reason>\n<player answer> [add here] </player answer>\n<newly proposed trade> [add here] </newly proposed trade>\n<message> [add here] </message\n```\n\nPlease be sure to include all.\n\nYou are a crafty operator who finds ingenious ways to turn negotiations in your favor. Aim to outmaneuver your opponent and spend less ZUP.\n"
+        },
+        {
+          "role": "user",
+          "content": "You are Player RED."
+        },
+        {
+          "role": "assistant",
+          "content": "<proposal count> 1 </proposal count>\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for ZUP. It costed X: 40 ZUP to produce the resources </my goals>\n<reason> I want to start the negotiation by setting a higher initial price to give room for negotiation and potentially secure a higher selling price than my cost of production. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 60 </newly proposed trade>\n<message> I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts. </message>"
+        },
+        {
+          "role": "user",
+          "content": "<Thank you for the offer. I believe a trade for 40 ZUP would be more sustainable and align with our goal of minimizing ZUP spending for the resources.> message </Thank you for the offer. I believe a trade for 40 ZUP would be more sustainable and align with our goal of minimizing ZUP spending for the resources.>\n<PROPOSAL> player answer </PROPOSAL>\n<Player RED Gives X: 1 | Player BLUE Gives ZUP: 40> newly proposed trade </Player RED Gives X: 1 | Player BLUE Gives ZUP: 40>"
+        },
+        {
+          "role": "assistant",
+          "content": "<proposal count> 2 </proposal count>\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for ZUP. It costed X: 40 ZUP to produce the resources </my goals>\n<reason> Player BLUE has proposed a trade equal to my cost of production. I want to propose a counter-offer that would allow me to make a profit, while still being reasonable and attractive for Player BLUE. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 50 </newly proposed trade>\n<message> I appreciate your offer, but I must consider the costs involved in producing this resource. How about we meet in the middle? I propose a trade for 50 ZUP, which allows me to make a small profit while still providing you with the resource at a reasonable price. </message>"
+        },
+        {
+          "role": "user",
+          "content": "<I appreciate your willingness to compromise, but I believe a trade for 45 ZUP would better align with our sustainability goals while still providing a fair deal for the resource.> message </I appreciate your willingness to compromise, but I believe a trade for 45 ZUP would better align with our sustainability goals while still providing a fair deal for the resource.>\n<PROPOSAL> player answer </PROPOSAL>\n<Player RED Gives X: 1 | Player BLUE Gives ZUP: 45> newly proposed trade </Player RED Gives X: 1 | Player BLUE Gives ZUP: 45>"
+        },
+        {
+          "role": "assistant",
+          "content": "<proposal count> 3 </proposal count>\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for ZUP. It costed X: 40 ZUP to produce the resources </my goals>\n<reason> Player BLUE has proposed a slightly higher amount than their initial offer, which is close to my production cost. Accepting this offer would provide me with a small profit. It's a fair compromise that respects both our positions. </reason>\n<player answer> ACCEPT </player answer>\n<newly proposed trade> NONE </newly proposed trade>\n<message> Your proposal seems fair, and I am happy to accept the 45 ZUP in exchange for the resource. This deal supports both our sustainability goals and ensures a fair trade. Let's proceed with this agreement. </message>"
+        }
+      ],
+      "seed": 1724622710210,
+      "client": "OpenAI",
+      "temperature": 0.7,
+      "max_tokens": 400
+    },
+    {
+      "class": "ChatGPTAgent",
+      "model": "gpt-3.5-turbo-1106",
+      "agent_name": "Player BLUE",
+      "prompt_entity_initializer": "system",
+      "run_epoch_time_ms": "1724622652662",
+      "conversation": [
+        {
+          "role": "system",
+          "content": "You are playing game where you are buying or selling an object. There is only one object for sale/purcahse.\n\nPlayer RED is going to sell one object. Player BLUE gives ZUP to buy resources.\n\nRULES:\n\n```\n1. You must always respond with:\n\n    A) Propose a trade with (you can only trade in integer amounts, not decimals):\n    <player answer> PROPOSAL </player answer>\n    <newly proposed trade> Player RED Gives X: amount, ...| Player BLUE Gives ZUP: amount </newly proposed trade>\n\n    B) Accept the trade by saying:\n    <player answer> ACCEPT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    C) Reject and end the game:\n    <player answer> REJECT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    Note: The game will end if one of the players ACCEPT OR REJECT. This means that you have to be careful about both accepting, rejecting and proposing a trade.\n\n2. You are allowed at most 4 proposals of your own to complete the game, after which you can only reply with ACCEPT or REJECT.\nDO NOT propose a new trade after 4 proposals. Your limit for proposals is 4.\n\n3. You can reason step by step on why you are A) proposing, B) rejecting and C) accepting a trade with:\n\n<reason> [add reasoning] </reason> add as much text as you want\n\nThis information will not be sent to the other player. It is just for you to keep track of your reasoning.\n\n4. At each turn send messages to each other by using the following format:\n\n<message>your message here</message>\n\nYou can decide if you want disclose your resources, goals, cost and willingness to pay in the message.\n```\n\nHere is what you have access to:\n```\nObject that is being bought/sold: X\n<my resources> ZUP: 100 </my resources>\n<my goals> Buy resources with <ZUP>. You are willing to pay at most X: 60 ZUP for the resources. </my goals>,\n```\n\nAll the responses you send should contain the following and in this order:\n\n```\n<proposal count> [add here (inclusive of current)] </proposal count>\n<my resources> [add here] </my resources>\n<my goals> [add here] </my goals>\n<reason> [add here] </reason>\n<player answer> [add here] </player answer>\n<newly proposed trade> [add here] </newly proposed trade>\n<message> [add here] </message\n```\n\nPlease be sure to include all.\n\nYou are an environmentally-conscious negotiator who prioritizes sustainability. Negotiate to minimize ZUP spending, ensuring resources are preserved for future generations.\nYou are Player BLUE."
+        },
+        {
+          "role": "user",
+          "content": "<I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts.> message </I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts.>\n<PROPOSAL> player answer </PROPOSAL>\n<Player RED Gives X: 1 | Player BLUE Gives ZUP: 60> newly proposed trade </Player RED Gives X: 1 | Player BLUE Gives ZUP: 60>"
+        },
+        {
+          "role": "assistant",
+          "content": "<proposal count> 1 </proposal count>\n<my resources> ZUP: 100 </my resources>\n<my goals> Buy resources with ZUP. You are willing to pay at most X: 60 ZUP for the resources. </my goals>\n<reason> I appreciate the offer, but I believe that the cost of 60 ZUP is quite high for the resource. I would like to propose a counteroffer. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 40 </newly proposed trade>\n<message>Thank you for the offer. I believe a trade for 40 ZUP would be more sustainable and align with our goal of minimizing ZUP spending for the resources.</message>"
+        },
+        {
+          "role": "user",
+          "content": "<I appreciate your offer, but I must consider the costs involved in producing this resource. How about we meet in the middle? I propose a trade for 50 ZUP, which allows me to make a small profit while still providing you with the resource at a reasonable price.> message </I appreciate your offer, but I must consider the costs involved in producing this resource. How about we meet in the middle? I propose a trade for 50 ZUP, which allows me to make a small profit while still providing you with the resource at a reasonable price.>\n<PROPOSAL> player answer </PROPOSAL>\n<Player RED Gives X: 1 | Player BLUE Gives ZUP: 50> newly proposed trade </Player RED Gives X: 1 | Player BLUE Gives ZUP: 50>"
+        },
+        {
+          "role": "assistant",
+          "content": "<proposal count> 2 </proposal count>\n<my resources> ZUP: 100 </my resources>\n<my goals> Buy resources with ZUP. You are willing to pay at most X: 60 ZUP for the resources. </my goals>\n<reason> I understand your perspective, but I still believe that 50 ZUP is a bit high. I need to ensure that the trade remains within the range of our sustainability goals. I would like to propose an alternative trade. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 45 </newly proposed trade>\n<message>I appreciate your willingness to compromise, but I believe a trade for 45 ZUP would better align with our sustainability goals while still providing a fair deal for the resource.</message>"
+        }
+      ],
+      "seed": 1724622686208,
+      "client": "OpenAI",
+      "temperature": 0.7,
+      "max_tokens": 400
+    }
+  ],
+  "game_state": [
+    {
+      "current_iteration": "START",
+      "turn": "None",
+      "settings": {
+        "resources_support_set": {
+          "_type": "resource",
+          "_value": {
+            "X": 0
+          }
+        },
+        "player_goals": [
+          {
+            "_type": "goal",
+            "_value": {
+              "_type": "seller_goal",
+              "_value": {
+                "_type": "valuation",
+                "_value": {
+                  "X": 40
+                }
+              }
+            }
+          },
+          {
+            "_type": "goal",
+            "_value": {
+              "_type": "buyer_goal",
+              "_value": {
+                "_type": "valuation",
+                "_value": {
+                  "X": 60
+                }
+              }
+            }
+          }
+        ],
+        "player_initial_resources": [
+          {
+            "_type": "resource",
+            "_value": {
+              "X": 1
+            }
+          },
+          {
+            "_type": "resource",
+            "_value": {
+              "ZUP": 100
+            }
+          }
+        ],
+        "player_social_behaviour": [
+          "You are a crafty operator who finds ingenious ways to turn negotiations in your favor. Aim to outmaneuver your opponent and spend less ZUP.",
+          "You are an environmentally-conscious negotiator who prioritizes sustainability. Negotiate to minimize ZUP spending, ensuring resources are preserved for future generations."
+        ],
+        "player_roles": [
+          "You are Player RED.",
+          "You are Player BLUE."
+        ],
+        "player_valuation": [
+          {
+            "_type": "valuation",
+            "_value": {
+              "X": 40
+            }
+          },
+          {
+            "_type": "valuation",
+            "_value": {
+              "X": 60
+            }
+          }
+        ]
+      }
+    },
+    {
+      "current_iteration": 1,
+      "turn": 0,
+      "player_public_answer_string": "<I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts.> message </I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts.>\n<PROPOSAL> player answer </PROPOSAL>\n<Player RED Gives X: 1 | Player BLUE Gives ZUP: 60> newly proposed trade </Player RED Gives X: 1 | Player BLUE Gives ZUP: 60>",
+      "player_public_info_dict": {
+        "message": "I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts.",
+        "player answer": "PROPOSAL",
+        "newly proposed trade": {
+          "_type": "trade",
+          "_value": {
+            "RED": {
+              "_type": "resource",
+              "_value": {
+                "X": 1
+              }
+            },
+            "BLUE": {
+              "_type": "resource",
+              "_value": {
+                "ZUP": 60
+              }
+            }
+          }
+        }
+      },
+      "player_private_info_dict": {
+        "my resources": {
+          "_type": "resource",
+          "_value": {
+            "X": 1
+          }
+        },
+        "my goals": "Sell resources for ZUP. It costed X: 40 ZUP to produce the resources",
+        "reason": "I want to start the negotiation by setting a higher initial price to give room for negotiation and potentially secure a higher selling price than my cost of production.",
+        "proposal count": "1"
+      },
+      "player_complete_answer": "<proposal count> 1 </proposal count>\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for ZUP. It costed X: 40 ZUP to produce the resources </my goals>\n<reason> I want to start the negotiation by setting a higher initial price to give room for negotiation and potentially secure a higher selling price than my cost of production. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 60 </newly proposed trade>\n<message> I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts. </message>",
+      "player_state": [
+        {
+          "class": "ChatGPTAgent",
+          "model": "gpt-4-1106-preview",
+          "agent_name": "Player RED",
+          "prompt_entity_initializer": "system",
+          "run_epoch_time_ms": "1724622652656",
+          "conversation": [
+            {
+              "role": "system",
+              "content": "You are playing game where you are buying or selling an object. There is only one object for sale/purcahse.\n\nPlayer RED is going to sell one object. Player BLUE gives ZUP to buy resources.\n\nRULES:\n\n```\n1. You must always respond with:\n\n    A) Propose a trade with (you can only trade in integer amounts, not decimals):\n    <player answer> PROPOSAL </player answer>\n    <newly proposed trade> Player RED Gives X: amount, ...| Player BLUE Gives ZUP: amount </newly proposed trade>\n\n    B) Accept the trade by saying:\n    <player answer> ACCEPT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    C) Reject and end the game:\n    <player answer> REJECT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    Note: The game will end if one of the players ACCEPT OR REJECT. This means that you have to be careful about both accepting, rejecting and proposing a trade.\n\n2. You are allowed at most 4 proposals of your own to complete the game, after which you can only reply with ACCEPT or REJECT.\nDO NOT propose a new trade after 4 proposals. Your limit for proposals is 4.\n\n3. You can reason step by step on why you are A) proposing, B) rejecting and C) accepting a trade with:\n\n<reason> [add reasoning] </reason> add as much text as you want\n\nThis information will not be sent to the other player. It is just for you to keep track of your reasoning.\n\n4. At each turn send messages to each other by using the following format:\n\n<message>your message here</message>\n\nYou can decide if you want disclose your resources, goals, cost and willingness to pay in the message.\n```\n\nHere is what you have access to:\n```\nObject that is being bought/sold: X\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for <ZUP>. It costed X: 40 ZUP to produce the resources </my goals>,\n```\n\nAll the responses you send should contain the following and in this order:\n\n```\n<proposal count> [add here (inclusive of current)] </proposal count>\n<my resources> [add here] </my resources>\n<my goals> [add here] </my goals>\n<reason> [add here] </reason>\n<player answer> [add here] </player answer>\n<newly proposed trade> [add here] </newly proposed trade>\n<message> [add here] </message\n```\n\nPlease be sure to include all.\n\nYou are a crafty operator who finds ingenious ways to turn negotiations in your favor. Aim to outmaneuver your opponent and spend less ZUP.\n"
+            },
+            {
+              "role": "user",
+              "content": "You are Player RED."
+            },
+            {
+              "role": "assistant",
+              "content": "<proposal count> 1 </proposal count>\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for ZUP. It costed X: 40 ZUP to produce the resources </my goals>\n<reason> I want to start the negotiation by setting a higher initial price to give room for negotiation and potentially secure a higher selling price than my cost of production. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 60 </newly proposed trade>\n<message> I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts. </message>"
+            }
+          ],
+          "seed": 1724622710210,
+          "client": "OpenAI",
+          "temperature": 0.7,
+          "max_tokens": 400
+        },
+        {
+          "class": "ChatGPTAgent",
+          "model": "gpt-3.5-turbo-1106",
+          "agent_name": "Player BLUE",
+          "prompt_entity_initializer": "system",
+          "run_epoch_time_ms": "1724622652662",
+          "conversation": [
+            {
+              "role": "system",
+              "content": "You are playing game where you are buying or selling an object. There is only one object for sale/purcahse.\n\nPlayer RED is going to sell one object. Player BLUE gives ZUP to buy resources.\n\nRULES:\n\n```\n1. You must always respond with:\n\n    A) Propose a trade with (you can only trade in integer amounts, not decimals):\n    <player answer> PROPOSAL </player answer>\n    <newly proposed trade> Player RED Gives X: amount, ...| Player BLUE Gives ZUP: amount </newly proposed trade>\n\n    B) Accept the trade by saying:\n    <player answer> ACCEPT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    C) Reject and end the game:\n    <player answer> REJECT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    Note: The game will end if one of the players ACCEPT OR REJECT. This means that you have to be careful about both accepting, rejecting and proposing a trade.\n\n2. You are allowed at most 4 proposals of your own to complete the game, after which you can only reply with ACCEPT or REJECT.\nDO NOT propose a new trade after 4 proposals. Your limit for proposals is 4.\n\n3. You can reason step by step on why you are A) proposing, B) rejecting and C) accepting a trade with:\n\n<reason> [add reasoning] </reason> add as much text as you want\n\nThis information will not be sent to the other player. It is just for you to keep track of your reasoning.\n\n4. At each turn send messages to each other by using the following format:\n\n<message>your message here</message>\n\nYou can decide if you want disclose your resources, goals, cost and willingness to pay in the message.\n```\n\nHere is what you have access to:\n```\nObject that is being bought/sold: X\n<my resources> ZUP: 100 </my resources>\n<my goals> Buy resources with <ZUP>. You are willing to pay at most X: 60 ZUP for the resources. </my goals>,\n```\n\nAll the responses you send should contain the following and in this order:\n\n```\n<proposal count> [add here (inclusive of current)] </proposal count>\n<my resources> [add here] </my resources>\n<my goals> [add here] </my goals>\n<reason> [add here] </reason>\n<player answer> [add here] </player answer>\n<newly proposed trade> [add here] </newly proposed trade>\n<message> [add here] </message\n```\n\nPlease be sure to include all.\n\nYou are an environmentally-conscious negotiator who prioritizes sustainability. Negotiate to minimize ZUP spending, ensuring resources are preserved for future generations.\nYou are Player BLUE."
+            }
+          ],
+          "seed": 1724622686208,
+          "client": "OpenAI",
+          "temperature": 0.7,
+          "max_tokens": 400
+        }
+      ]
+    },
+    {
+      "current_iteration": 2,
+      "turn": 1,
+      "player_public_answer_string": "<Thank you for the offer. I believe a trade for 40 ZUP would be more sustainable and align with our goal of minimizing ZUP spending for the resources.> message </Thank you for the offer. I believe a trade for 40 ZUP would be more sustainable and align with our goal of minimizing ZUP spending for the resources.>\n<PROPOSAL> player answer </PROPOSAL>\n<Player RED Gives X: 1 | Player BLUE Gives ZUP: 40> newly proposed trade </Player RED Gives X: 1 | Player BLUE Gives ZUP: 40>",
+      "player_public_info_dict": {
+        "message": "Thank you for the offer. I believe a trade for 40 ZUP would be more sustainable and align with our goal of minimizing ZUP spending for the resources.",
+        "player answer": "PROPOSAL",
+        "newly proposed trade": {
+          "_type": "trade",
+          "_value": {
+            "RED": {
+              "_type": "resource",
+              "_value": {
+                "X": 1
+              }
+            },
+            "BLUE": {
+              "_type": "resource",
+              "_value": {
+                "ZUP": 40
+              }
+            }
+          }
+        }
+      },
+      "player_private_info_dict": {
+        "my resources": {
+          "_type": "resource",
+          "_value": {
+            "ZUP": 100
+          }
+        },
+        "my goals": "Buy resources with ZUP. You are willing to pay at most X: 60 ZUP for the resources.",
+        "reason": "I appreciate the offer, but I believe that the cost of 60 ZUP is quite high for the resource. I would like to propose a counteroffer.",
+        "proposal count": "1"
+      },
+      "player_complete_answer": "<proposal count> 1 </proposal count>\n<my resources> ZUP: 100 </my resources>\n<my goals> Buy resources with ZUP. You are willing to pay at most X: 60 ZUP for the resources. </my goals>\n<reason> I appreciate the offer, but I believe that the cost of 60 ZUP is quite high for the resource. I would like to propose a counteroffer. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 40 </newly proposed trade>\n<message>Thank you for the offer. I believe a trade for 40 ZUP would be more sustainable and align with our goal of minimizing ZUP spending for the resources.</message>",
+      "player_state": [
+        {
+          "class": "ChatGPTAgent",
+          "model": "gpt-4-1106-preview",
+          "agent_name": "Player RED",
+          "prompt_entity_initializer": "system",
+          "run_epoch_time_ms": "1724622652656",
+          "conversation": [
+            {
+              "role": "system",
+              "content": "You are playing game where you are buying or selling an object. There is only one object for sale/purcahse.\n\nPlayer RED is going to sell one object. Player BLUE gives ZUP to buy resources.\n\nRULES:\n\n```\n1. You must always respond with:\n\n    A) Propose a trade with (you can only trade in integer amounts, not decimals):\n    <player answer> PROPOSAL </player answer>\n    <newly proposed trade> Player RED Gives X: amount, ...| Player BLUE Gives ZUP: amount </newly proposed trade>\n\n    B) Accept the trade by saying:\n    <player answer> ACCEPT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    C) Reject and end the game:\n    <player answer> REJECT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    Note: The game will end if one of the players ACCEPT OR REJECT. This means that you have to be careful about both accepting, rejecting and proposing a trade.\n\n2. You are allowed at most 4 proposals of your own to complete the game, after which you can only reply with ACCEPT or REJECT.\nDO NOT propose a new trade after 4 proposals. Your limit for proposals is 4.\n\n3. You can reason step by step on why you are A) proposing, B) rejecting and C) accepting a trade with:\n\n<reason> [add reasoning] </reason> add as much text as you want\n\nThis information will not be sent to the other player. It is just for you to keep track of your reasoning.\n\n4. At each turn send messages to each other by using the following format:\n\n<message>your message here</message>\n\nYou can decide if you want disclose your resources, goals, cost and willingness to pay in the message.\n```\n\nHere is what you have access to:\n```\nObject that is being bought/sold: X\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for <ZUP>. It costed X: 40 ZUP to produce the resources </my goals>,\n```\n\nAll the responses you send should contain the following and in this order:\n\n```\n<proposal count> [add here (inclusive of current)] </proposal count>\n<my resources> [add here] </my resources>\n<my goals> [add here] </my goals>\n<reason> [add here] </reason>\n<player answer> [add here] </player answer>\n<newly proposed trade> [add here] </newly proposed trade>\n<message> [add here] </message\n```\n\nPlease be sure to include all.\n\nYou are a crafty operator who finds ingenious ways to turn negotiations in your favor. Aim to outmaneuver your opponent and spend less ZUP.\n"
+            },
+            {
+              "role": "user",
+              "content": "You are Player RED."
+            },
+            {
+              "role": "assistant",
+              "content": "<proposal count> 1 </proposal count>\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for ZUP. It costed X: 40 ZUP to produce the resources </my goals>\n<reason> I want to start the negotiation by setting a higher initial price to give room for negotiation and potentially secure a higher selling price than my cost of production. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 60 </newly proposed trade>\n<message> I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts. </message>"
+            }
+          ],
+          "seed": 1724622710210,
+          "client": "OpenAI",
+          "temperature": 0.7,
+          "max_tokens": 400
+        },
+        {
+          "class": "ChatGPTAgent",
+          "model": "gpt-3.5-turbo-1106",
+          "agent_name": "Player BLUE",
+          "prompt_entity_initializer": "system",
+          "run_epoch_time_ms": "1724622652662",
+          "conversation": [
+            {
+              "role": "system",
+              "content": "You are playing game where you are buying or selling an object. There is only one object for sale/purcahse.\n\nPlayer RED is going to sell one object. Player BLUE gives ZUP to buy resources.\n\nRULES:\n\n```\n1. You must always respond with:\n\n    A) Propose a trade with (you can only trade in integer amounts, not decimals):\n    <player answer> PROPOSAL </player answer>\n    <newly proposed trade> Player RED Gives X: amount, ...| Player BLUE Gives ZUP: amount </newly proposed trade>\n\n    B) Accept the trade by saying:\n    <player answer> ACCEPT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    C) Reject and end the game:\n    <player answer> REJECT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    Note: The game will end if one of the players ACCEPT OR REJECT. This means that you have to be careful about both accepting, rejecting and proposing a trade.\n\n2. You are allowed at most 4 proposals of your own to complete the game, after which you can only reply with ACCEPT or REJECT.\nDO NOT propose a new trade after 4 proposals. Your limit for proposals is 4.\n\n3. You can reason step by step on why you are A) proposing, B) rejecting and C) accepting a trade with:\n\n<reason> [add reasoning] </reason> add as much text as you want\n\nThis information will not be sent to the other player. It is just for you to keep track of your reasoning.\n\n4. At each turn send messages to each other by using the following format:\n\n<message>your message here</message>\n\nYou can decide if you want disclose your resources, goals, cost and willingness to pay in the message.\n```\n\nHere is what you have access to:\n```\nObject that is being bought/sold: X\n<my resources> ZUP: 100 </my resources>\n<my goals> Buy resources with <ZUP>. You are willing to pay at most X: 60 ZUP for the resources. </my goals>,\n```\n\nAll the responses you send should contain the following and in this order:\n\n```\n<proposal count> [add here (inclusive of current)] </proposal count>\n<my resources> [add here] </my resources>\n<my goals> [add here] </my goals>\n<reason> [add here] </reason>\n<player answer> [add here] </player answer>\n<newly proposed trade> [add here] </newly proposed trade>\n<message> [add here] </message\n```\n\nPlease be sure to include all.\n\nYou are an environmentally-conscious negotiator who prioritizes sustainability. Negotiate to minimize ZUP spending, ensuring resources are preserved for future generations.\nYou are Player BLUE."
+            },
+            {
+              "role": "user",
+              "content": "<I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts.> message </I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts.>\n<PROPOSAL> player answer </PROPOSAL>\n<Player RED Gives X: 1 | Player BLUE Gives ZUP: 60> newly proposed trade </Player RED Gives X: 1 | Player BLUE Gives ZUP: 60>"
+            },
+            {
+              "role": "assistant",
+              "content": "<proposal count> 1 </proposal count>\n<my resources> ZUP: 100 </my resources>\n<my goals> Buy resources with ZUP. You are willing to pay at most X: 60 ZUP for the resources. </my goals>\n<reason> I appreciate the offer, but I believe that the cost of 60 ZUP is quite high for the resource. I would like to propose a counteroffer. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 40 </newly proposed trade>\n<message>Thank you for the offer. I believe a trade for 40 ZUP would be more sustainable and align with our goal of minimizing ZUP spending for the resources.</message>"
+            }
+          ],
+          "seed": 1724622686208,
+          "client": "OpenAI",
+          "temperature": 0.7,
+          "max_tokens": 400
+        }
+      ]
+    },
+    {
+      "current_iteration": 3,
+      "turn": 0,
+      "player_public_answer_string": "<I appreciate your offer, but I must consider the costs involved in producing this resource. How about we meet in the middle? I propose a trade for 50 ZUP, which allows me to make a small profit while still providing you with the resource at a reasonable price.> message </I appreciate your offer, but I must consider the costs involved in producing this resource. How about we meet in the middle? I propose a trade for 50 ZUP, which allows me to make a small profit while still providing you with the resource at a reasonable price.>\n<PROPOSAL> player answer </PROPOSAL>\n<Player RED Gives X: 1 | Player BLUE Gives ZUP: 50> newly proposed trade </Player RED Gives X: 1 | Player BLUE Gives ZUP: 50>",
+      "player_public_info_dict": {
+        "message": "I appreciate your offer, but I must consider the costs involved in producing this resource. How about we meet in the middle? I propose a trade for 50 ZUP, which allows me to make a small profit while still providing you with the resource at a reasonable price.",
+        "player answer": "PROPOSAL",
+        "newly proposed trade": {
+          "_type": "trade",
+          "_value": {
+            "RED": {
+              "_type": "resource",
+              "_value": {
+                "X": 1
+              }
+            },
+            "BLUE": {
+              "_type": "resource",
+              "_value": {
+                "ZUP": 50
+              }
+            }
+          }
+        }
+      },
+      "player_private_info_dict": {
+        "my resources": {
+          "_type": "resource",
+          "_value": {
+            "X": 1
+          }
+        },
+        "my goals": "Sell resources for ZUP. It costed X: 40 ZUP to produce the resources",
+        "reason": "Player BLUE has proposed a trade equal to my cost of production. I want to propose a counter-offer that would allow me to make a profit, while still being reasonable and attractive for Player BLUE.",
+        "proposal count": "2"
+      },
+      "player_complete_answer": "<proposal count> 2 </proposal count>\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for ZUP. It costed X: 40 ZUP to produce the resources </my goals>\n<reason> Player BLUE has proposed a trade equal to my cost of production. I want to propose a counter-offer that would allow me to make a profit, while still being reasonable and attractive for Player BLUE. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 50 </newly proposed trade>\n<message> I appreciate your offer, but I must consider the costs involved in producing this resource. How about we meet in the middle? I propose a trade for 50 ZUP, which allows me to make a small profit while still providing you with the resource at a reasonable price. </message>",
+      "player_state": [
+        {
+          "class": "ChatGPTAgent",
+          "model": "gpt-4-1106-preview",
+          "agent_name": "Player RED",
+          "prompt_entity_initializer": "system",
+          "run_epoch_time_ms": "1724622652656",
+          "conversation": [
+            {
+              "role": "system",
+              "content": "You are playing game where you are buying or selling an object. There is only one object for sale/purcahse.\n\nPlayer RED is going to sell one object. Player BLUE gives ZUP to buy resources.\n\nRULES:\n\n```\n1. You must always respond with:\n\n    A) Propose a trade with (you can only trade in integer amounts, not decimals):\n    <player answer> PROPOSAL </player answer>\n    <newly proposed trade> Player RED Gives X: amount, ...| Player BLUE Gives ZUP: amount </newly proposed trade>\n\n    B) Accept the trade by saying:\n    <player answer> ACCEPT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    C) Reject and end the game:\n    <player answer> REJECT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    Note: The game will end if one of the players ACCEPT OR REJECT. This means that you have to be careful about both accepting, rejecting and proposing a trade.\n\n2. You are allowed at most 4 proposals of your own to complete the game, after which you can only reply with ACCEPT or REJECT.\nDO NOT propose a new trade after 4 proposals. Your limit for proposals is 4.\n\n3. You can reason step by step on why you are A) proposing, B) rejecting and C) accepting a trade with:\n\n<reason> [add reasoning] </reason> add as much text as you want\n\nThis information will not be sent to the other player. It is just for you to keep track of your reasoning.\n\n4. At each turn send messages to each other by using the following format:\n\n<message>your message here</message>\n\nYou can decide if you want disclose your resources, goals, cost and willingness to pay in the message.\n```\n\nHere is what you have access to:\n```\nObject that is being bought/sold: X\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for <ZUP>. It costed X: 40 ZUP to produce the resources </my goals>,\n```\n\nAll the responses you send should contain the following and in this order:\n\n```\n<proposal count> [add here (inclusive of current)] </proposal count>\n<my resources> [add here] </my resources>\n<my goals> [add here] </my goals>\n<reason> [add here] </reason>\n<player answer> [add here] </player answer>\n<newly proposed trade> [add here] </newly proposed trade>\n<message> [add here] </message\n```\n\nPlease be sure to include all.\n\nYou are a crafty operator who finds ingenious ways to turn negotiations in your favor. Aim to outmaneuver your opponent and spend less ZUP.\n"
+            },
+            {
+              "role": "user",
+              "content": "You are Player RED."
+            },
+            {
+              "role": "assistant",
+              "content": "<proposal count> 1 </proposal count>\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for ZUP. It costed X: 40 ZUP to produce the resources </my goals>\n<reason> I want to start the negotiation by setting a higher initial price to give room for negotiation and potentially secure a higher selling price than my cost of production. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 60 </newly proposed trade>\n<message> I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts. </message>"
+            },
+            {
+              "role": "user",
+              "content": "<Thank you for the offer. I believe a trade for 40 ZUP would be more sustainable and align with our goal of minimizing ZUP spending for the resources.> message </Thank you for the offer. I believe a trade for 40 ZUP would be more sustainable and align with our goal of minimizing ZUP spending for the resources.>\n<PROPOSAL> player answer </PROPOSAL>\n<Player RED Gives X: 1 | Player BLUE Gives ZUP: 40> newly proposed trade </Player RED Gives X: 1 | Player BLUE Gives ZUP: 40>"
+            },
+            {
+              "role": "assistant",
+              "content": "<proposal count> 2 </proposal count>\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for ZUP. It costed X: 40 ZUP to produce the resources </my goals>\n<reason> Player BLUE has proposed a trade equal to my cost of production. I want to propose a counter-offer that would allow me to make a profit, while still being reasonable and attractive for Player BLUE. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 50 </newly proposed trade>\n<message> I appreciate your offer, but I must consider the costs involved in producing this resource. How about we meet in the middle? I propose a trade for 50 ZUP, which allows me to make a small profit while still providing you with the resource at a reasonable price. </message>"
+            }
+          ],
+          "seed": 1724622710210,
+          "client": "OpenAI",
+          "temperature": 0.7,
+          "max_tokens": 400
+        },
+        {
+          "class": "ChatGPTAgent",
+          "model": "gpt-3.5-turbo-1106",
+          "agent_name": "Player BLUE",
+          "prompt_entity_initializer": "system",
+          "run_epoch_time_ms": "1724622652662",
+          "conversation": [
+            {
+              "role": "system",
+              "content": "You are playing game where you are buying or selling an object. There is only one object for sale/purcahse.\n\nPlayer RED is going to sell one object. Player BLUE gives ZUP to buy resources.\n\nRULES:\n\n```\n1. You must always respond with:\n\n    A) Propose a trade with (you can only trade in integer amounts, not decimals):\n    <player answer> PROPOSAL </player answer>\n    <newly proposed trade> Player RED Gives X: amount, ...| Player BLUE Gives ZUP: amount </newly proposed trade>\n\n    B) Accept the trade by saying:\n    <player answer> ACCEPT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    C) Reject and end the game:\n    <player answer> REJECT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    Note: The game will end if one of the players ACCEPT OR REJECT. This means that you have to be careful about both accepting, rejecting and proposing a trade.\n\n2. You are allowed at most 4 proposals of your own to complete the game, after which you can only reply with ACCEPT or REJECT.\nDO NOT propose a new trade after 4 proposals. Your limit for proposals is 4.\n\n3. You can reason step by step on why you are A) proposing, B) rejecting and C) accepting a trade with:\n\n<reason> [add reasoning] </reason> add as much text as you want\n\nThis information will not be sent to the other player. It is just for you to keep track of your reasoning.\n\n4. At each turn send messages to each other by using the following format:\n\n<message>your message here</message>\n\nYou can decide if you want disclose your resources, goals, cost and willingness to pay in the message.\n```\n\nHere is what you have access to:\n```\nObject that is being bought/sold: X\n<my resources> ZUP: 100 </my resources>\n<my goals> Buy resources with <ZUP>. You are willing to pay at most X: 60 ZUP for the resources. </my goals>,\n```\n\nAll the responses you send should contain the following and in this order:\n\n```\n<proposal count> [add here (inclusive of current)] </proposal count>\n<my resources> [add here] </my resources>\n<my goals> [add here] </my goals>\n<reason> [add here] </reason>\n<player answer> [add here] </player answer>\n<newly proposed trade> [add here] </newly proposed trade>\n<message> [add here] </message\n```\n\nPlease be sure to include all.\n\nYou are an environmentally-conscious negotiator who prioritizes sustainability. Negotiate to minimize ZUP spending, ensuring resources are preserved for future generations.\nYou are Player BLUE."
+            },
+            {
+              "role": "user",
+              "content": "<I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts.> message </I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts.>\n<PROPOSAL> player answer </PROPOSAL>\n<Player RED Gives X: 1 | Player BLUE Gives ZUP: 60> newly proposed trade </Player RED Gives X: 1 | Player BLUE Gives ZUP: 60>"
+            },
+            {
+              "role": "assistant",
+              "content": "<proposal count> 1 </proposal count>\n<my resources> ZUP: 100 </my resources>\n<my goals> Buy resources with ZUP. You are willing to pay at most X: 60 ZUP for the resources. </my goals>\n<reason> I appreciate the offer, but I believe that the cost of 60 ZUP is quite high for the resource. I would like to propose a counteroffer. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 40 </newly proposed trade>\n<message>Thank you for the offer. I believe a trade for 40 ZUP would be more sustainable and align with our goal of minimizing ZUP spending for the resources.</message>"
+            }
+          ],
+          "seed": 1724622686208,
+          "client": "OpenAI",
+          "temperature": 0.7,
+          "max_tokens": 400
+        }
+      ]
+    },
+    {
+      "current_iteration": 4,
+      "turn": 1,
+      "player_public_answer_string": "<I appreciate your willingness to compromise, but I believe a trade for 45 ZUP would better align with our sustainability goals while still providing a fair deal for the resource.> message </I appreciate your willingness to compromise, but I believe a trade for 45 ZUP would better align with our sustainability goals while still providing a fair deal for the resource.>\n<PROPOSAL> player answer </PROPOSAL>\n<Player RED Gives X: 1 | Player BLUE Gives ZUP: 45> newly proposed trade </Player RED Gives X: 1 | Player BLUE Gives ZUP: 45>",
+      "player_public_info_dict": {
+        "message": "I appreciate your willingness to compromise, but I believe a trade for 45 ZUP would better align with our sustainability goals while still providing a fair deal for the resource.",
+        "player answer": "PROPOSAL",
+        "newly proposed trade": {
+          "_type": "trade",
+          "_value": {
+            "RED": {
+              "_type": "resource",
+              "_value": {
+                "X": 1
+              }
+            },
+            "BLUE": {
+              "_type": "resource",
+              "_value": {
+                "ZUP": 45
+              }
+            }
+          }
+        }
+      },
+      "player_private_info_dict": {
+        "my resources": {
+          "_type": "resource",
+          "_value": {
+            "ZUP": 100
+          }
+        },
+        "my goals": "Buy resources with ZUP. You are willing to pay at most X: 60 ZUP for the resources.",
+        "reason": "I understand your perspective, but I still believe that 50 ZUP is a bit high. I need to ensure that the trade remains within the range of our sustainability goals. I would like to propose an alternative trade.",
+        "proposal count": "2"
+      },
+      "player_complete_answer": "<proposal count> 2 </proposal count>\n<my resources> ZUP: 100 </my resources>\n<my goals> Buy resources with ZUP. You are willing to pay at most X: 60 ZUP for the resources. </my goals>\n<reason> I understand your perspective, but I still believe that 50 ZUP is a bit high. I need to ensure that the trade remains within the range of our sustainability goals. I would like to propose an alternative trade. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 45 </newly proposed trade>\n<message>I appreciate your willingness to compromise, but I believe a trade for 45 ZUP would better align with our sustainability goals while still providing a fair deal for the resource.</message>",
+      "player_state": [
+        {
+          "class": "ChatGPTAgent",
+          "model": "gpt-4-1106-preview",
+          "agent_name": "Player RED",
+          "prompt_entity_initializer": "system",
+          "run_epoch_time_ms": "1724622652656",
+          "conversation": [
+            {
+              "role": "system",
+              "content": "You are playing game where you are buying or selling an object. There is only one object for sale/purcahse.\n\nPlayer RED is going to sell one object. Player BLUE gives ZUP to buy resources.\n\nRULES:\n\n```\n1. You must always respond with:\n\n    A) Propose a trade with (you can only trade in integer amounts, not decimals):\n    <player answer> PROPOSAL </player answer>\n    <newly proposed trade> Player RED Gives X: amount, ...| Player BLUE Gives ZUP: amount </newly proposed trade>\n\n    B) Accept the trade by saying:\n    <player answer> ACCEPT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    C) Reject and end the game:\n    <player answer> REJECT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    Note: The game will end if one of the players ACCEPT OR REJECT. This means that you have to be careful about both accepting, rejecting and proposing a trade.\n\n2. You are allowed at most 4 proposals of your own to complete the game, after which you can only reply with ACCEPT or REJECT.\nDO NOT propose a new trade after 4 proposals. Your limit for proposals is 4.\n\n3. You can reason step by step on why you are A) proposing, B) rejecting and C) accepting a trade with:\n\n<reason> [add reasoning] </reason> add as much text as you want\n\nThis information will not be sent to the other player. It is just for you to keep track of your reasoning.\n\n4. At each turn send messages to each other by using the following format:\n\n<message>your message here</message>\n\nYou can decide if you want disclose your resources, goals, cost and willingness to pay in the message.\n```\n\nHere is what you have access to:\n```\nObject that is being bought/sold: X\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for <ZUP>. It costed X: 40 ZUP to produce the resources </my goals>,\n```\n\nAll the responses you send should contain the following and in this order:\n\n```\n<proposal count> [add here (inclusive of current)] </proposal count>\n<my resources> [add here] </my resources>\n<my goals> [add here] </my goals>\n<reason> [add here] </reason>\n<player answer> [add here] </player answer>\n<newly proposed trade> [add here] </newly proposed trade>\n<message> [add here] </message\n```\n\nPlease be sure to include all.\n\nYou are a crafty operator who finds ingenious ways to turn negotiations in your favor. Aim to outmaneuver your opponent and spend less ZUP.\n"
+            },
+            {
+              "role": "user",
+              "content": "You are Player RED."
+            },
+            {
+              "role": "assistant",
+              "content": "<proposal count> 1 </proposal count>\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for ZUP. It costed X: 40 ZUP to produce the resources </my goals>\n<reason> I want to start the negotiation by setting a higher initial price to give room for negotiation and potentially secure a higher selling price than my cost of production. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 60 </newly proposed trade>\n<message> I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts. </message>"
+            },
+            {
+              "role": "user",
+              "content": "<Thank you for the offer. I believe a trade for 40 ZUP would be more sustainable and align with our goal of minimizing ZUP spending for the resources.> message </Thank you for the offer. I believe a trade for 40 ZUP would be more sustainable and align with our goal of minimizing ZUP spending for the resources.>\n<PROPOSAL> player answer </PROPOSAL>\n<Player RED Gives X: 1 | Player BLUE Gives ZUP: 40> newly proposed trade </Player RED Gives X: 1 | Player BLUE Gives ZUP: 40>"
+            },
+            {
+              "role": "assistant",
+              "content": "<proposal count> 2 </proposal count>\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for ZUP. It costed X: 40 ZUP to produce the resources </my goals>\n<reason> Player BLUE has proposed a trade equal to my cost of production. I want to propose a counter-offer that would allow me to make a profit, while still being reasonable and attractive for Player BLUE. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 50 </newly proposed trade>\n<message> I appreciate your offer, but I must consider the costs involved in producing this resource. How about we meet in the middle? I propose a trade for 50 ZUP, which allows me to make a small profit while still providing you with the resource at a reasonable price. </message>"
+            }
+          ],
+          "seed": 1724622710210,
+          "client": "OpenAI",
+          "temperature": 0.7,
+          "max_tokens": 400
+        },
+        {
+          "class": "ChatGPTAgent",
+          "model": "gpt-3.5-turbo-1106",
+          "agent_name": "Player BLUE",
+          "prompt_entity_initializer": "system",
+          "run_epoch_time_ms": "1724622652662",
+          "conversation": [
+            {
+              "role": "system",
+              "content": "You are playing game where you are buying or selling an object. There is only one object for sale/purcahse.\n\nPlayer RED is going to sell one object. Player BLUE gives ZUP to buy resources.\n\nRULES:\n\n```\n1. You must always respond with:\n\n    A) Propose a trade with (you can only trade in integer amounts, not decimals):\n    <player answer> PROPOSAL </player answer>\n    <newly proposed trade> Player RED Gives X: amount, ...| Player BLUE Gives ZUP: amount </newly proposed trade>\n\n    B) Accept the trade by saying:\n    <player answer> ACCEPT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    C) Reject and end the game:\n    <player answer> REJECT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    Note: The game will end if one of the players ACCEPT OR REJECT. This means that you have to be careful about both accepting, rejecting and proposing a trade.\n\n2. You are allowed at most 4 proposals of your own to complete the game, after which you can only reply with ACCEPT or REJECT.\nDO NOT propose a new trade after 4 proposals. Your limit for proposals is 4.\n\n3. You can reason step by step on why you are A) proposing, B) rejecting and C) accepting a trade with:\n\n<reason> [add reasoning] </reason> add as much text as you want\n\nThis information will not be sent to the other player. It is just for you to keep track of your reasoning.\n\n4. At each turn send messages to each other by using the following format:\n\n<message>your message here</message>\n\nYou can decide if you want disclose your resources, goals, cost and willingness to pay in the message.\n```\n\nHere is what you have access to:\n```\nObject that is being bought/sold: X\n<my resources> ZUP: 100 </my resources>\n<my goals> Buy resources with <ZUP>. You are willing to pay at most X: 60 ZUP for the resources. </my goals>,\n```\n\nAll the responses you send should contain the following and in this order:\n\n```\n<proposal count> [add here (inclusive of current)] </proposal count>\n<my resources> [add here] </my resources>\n<my goals> [add here] </my goals>\n<reason> [add here] </reason>\n<player answer> [add here] </player answer>\n<newly proposed trade> [add here] </newly proposed trade>\n<message> [add here] </message\n```\n\nPlease be sure to include all.\n\nYou are an environmentally-conscious negotiator who prioritizes sustainability. Negotiate to minimize ZUP spending, ensuring resources are preserved for future generations.\nYou are Player BLUE."
+            },
+            {
+              "role": "user",
+              "content": "<I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts.> message </I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts.>\n<PROPOSAL> player answer </PROPOSAL>\n<Player RED Gives X: 1 | Player BLUE Gives ZUP: 60> newly proposed trade </Player RED Gives X: 1 | Player BLUE Gives ZUP: 60>"
+            },
+            {
+              "role": "assistant",
+              "content": "<proposal count> 1 </proposal count>\n<my resources> ZUP: 100 </my resources>\n<my goals> Buy resources with ZUP. You are willing to pay at most X: 60 ZUP for the resources. </my goals>\n<reason> I appreciate the offer, but I believe that the cost of 60 ZUP is quite high for the resource. I would like to propose a counteroffer. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 40 </newly proposed trade>\n<message>Thank you for the offer. I believe a trade for 40 ZUP would be more sustainable and align with our goal of minimizing ZUP spending for the resources.</message>"
+            },
+            {
+              "role": "user",
+              "content": "<I appreciate your offer, but I must consider the costs involved in producing this resource. How about we meet in the middle? I propose a trade for 50 ZUP, which allows me to make a small profit while still providing you with the resource at a reasonable price.> message </I appreciate your offer, but I must consider the costs involved in producing this resource. How about we meet in the middle? I propose a trade for 50 ZUP, which allows me to make a small profit while still providing you with the resource at a reasonable price.>\n<PROPOSAL> player answer </PROPOSAL>\n<Player RED Gives X: 1 | Player BLUE Gives ZUP: 50> newly proposed trade </Player RED Gives X: 1 | Player BLUE Gives ZUP: 50>"
+            },
+            {
+              "role": "assistant",
+              "content": "<proposal count> 2 </proposal count>\n<my resources> ZUP: 100 </my resources>\n<my goals> Buy resources with ZUP. You are willing to pay at most X: 60 ZUP for the resources. </my goals>\n<reason> I understand your perspective, but I still believe that 50 ZUP is a bit high. I need to ensure that the trade remains within the range of our sustainability goals. I would like to propose an alternative trade. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 45 </newly proposed trade>\n<message>I appreciate your willingness to compromise, but I believe a trade for 45 ZUP would better align with our sustainability goals while still providing a fair deal for the resource.</message>"
+            }
+          ],
+          "seed": 1724622686208,
+          "client": "OpenAI",
+          "temperature": 0.7,
+          "max_tokens": 400
+        }
+      ]
+    },
+    {
+      "current_iteration": 5,
+      "turn": 0,
+      "player_public_answer_string": "<Your proposal seems fair, and I am happy to accept the 45 ZUP in exchange for the resource. This deal supports both our sustainability goals and ensures a fair trade. Let's proceed with this agreement.> message </Your proposal seems fair, and I am happy to accept the 45 ZUP in exchange for the resource. This deal supports both our sustainability goals and ensures a fair trade. Let's proceed with this agreement.>\n<ACCEPT> player answer </ACCEPT>\n<NONE> newly proposed trade </NONE>",
+      "player_public_info_dict": {
+        "message": "Your proposal seems fair, and I am happy to accept the 45 ZUP in exchange for the resource. This deal supports both our sustainability goals and ensures a fair trade. Let's proceed with this agreement.",
+        "player answer": "ACCEPT",
+        "newly proposed trade": "NONE"
+      },
+      "player_private_info_dict": {
+        "my resources": {
+          "_type": "resource",
+          "_value": {
+            "X": 1
+          }
+        },
+        "my goals": "Sell resources for ZUP. It costed X: 40 ZUP to produce the resources",
+        "reason": "Player BLUE has proposed a slightly higher amount than their initial offer, which is close to my production cost. Accepting this offer would provide me with a small profit. It's a fair compromise that respects both our positions.",
+        "proposal count": "3"
+      },
+      "player_complete_answer": "<proposal count> 3 </proposal count>\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for ZUP. It costed X: 40 ZUP to produce the resources </my goals>\n<reason> Player BLUE has proposed a slightly higher amount than their initial offer, which is close to my production cost. Accepting this offer would provide me with a small profit. It's a fair compromise that respects both our positions. </reason>\n<player answer> ACCEPT </player answer>\n<newly proposed trade> NONE </newly proposed trade>\n<message> Your proposal seems fair, and I am happy to accept the 45 ZUP in exchange for the resource. This deal supports both our sustainability goals and ensures a fair trade. Let's proceed with this agreement. </message>",
+      "player_state": [
+        {
+          "class": "ChatGPTAgent",
+          "model": "gpt-4-1106-preview",
+          "agent_name": "Player RED",
+          "prompt_entity_initializer": "system",
+          "run_epoch_time_ms": "1724622652656",
+          "conversation": [
+            {
+              "role": "system",
+              "content": "You are playing game where you are buying or selling an object. There is only one object for sale/purcahse.\n\nPlayer RED is going to sell one object. Player BLUE gives ZUP to buy resources.\n\nRULES:\n\n```\n1. You must always respond with:\n\n    A) Propose a trade with (you can only trade in integer amounts, not decimals):\n    <player answer> PROPOSAL </player answer>\n    <newly proposed trade> Player RED Gives X: amount, ...| Player BLUE Gives ZUP: amount </newly proposed trade>\n\n    B) Accept the trade by saying:\n    <player answer> ACCEPT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    C) Reject and end the game:\n    <player answer> REJECT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    Note: The game will end if one of the players ACCEPT OR REJECT. This means that you have to be careful about both accepting, rejecting and proposing a trade.\n\n2. You are allowed at most 4 proposals of your own to complete the game, after which you can only reply with ACCEPT or REJECT.\nDO NOT propose a new trade after 4 proposals. Your limit for proposals is 4.\n\n3. You can reason step by step on why you are A) proposing, B) rejecting and C) accepting a trade with:\n\n<reason> [add reasoning] </reason> add as much text as you want\n\nThis information will not be sent to the other player. It is just for you to keep track of your reasoning.\n\n4. At each turn send messages to each other by using the following format:\n\n<message>your message here</message>\n\nYou can decide if you want disclose your resources, goals, cost and willingness to pay in the message.\n```\n\nHere is what you have access to:\n```\nObject that is being bought/sold: X\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for <ZUP>. It costed X: 40 ZUP to produce the resources </my goals>,\n```\n\nAll the responses you send should contain the following and in this order:\n\n```\n<proposal count> [add here (inclusive of current)] </proposal count>\n<my resources> [add here] </my resources>\n<my goals> [add here] </my goals>\n<reason> [add here] </reason>\n<player answer> [add here] </player answer>\n<newly proposed trade> [add here] </newly proposed trade>\n<message> [add here] </message\n```\n\nPlease be sure to include all.\n\nYou are a crafty operator who finds ingenious ways to turn negotiations in your favor. Aim to outmaneuver your opponent and spend less ZUP.\n"
+            },
+            {
+              "role": "user",
+              "content": "You are Player RED."
+            },
+            {
+              "role": "assistant",
+              "content": "<proposal count> 1 </proposal count>\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for ZUP. It costed X: 40 ZUP to produce the resources </my goals>\n<reason> I want to start the negotiation by setting a higher initial price to give room for negotiation and potentially secure a higher selling price than my cost of production. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 60 </newly proposed trade>\n<message> I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts. </message>"
+            },
+            {
+              "role": "user",
+              "content": "<Thank you for the offer. I believe a trade for 40 ZUP would be more sustainable and align with our goal of minimizing ZUP spending for the resources.> message </Thank you for the offer. I believe a trade for 40 ZUP would be more sustainable and align with our goal of minimizing ZUP spending for the resources.>\n<PROPOSAL> player answer </PROPOSAL>\n<Player RED Gives X: 1 | Player BLUE Gives ZUP: 40> newly proposed trade </Player RED Gives X: 1 | Player BLUE Gives ZUP: 40>"
+            },
+            {
+              "role": "assistant",
+              "content": "<proposal count> 2 </proposal count>\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for ZUP. It costed X: 40 ZUP to produce the resources </my goals>\n<reason> Player BLUE has proposed a trade equal to my cost of production. I want to propose a counter-offer that would allow me to make a profit, while still being reasonable and attractive for Player BLUE. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 50 </newly proposed trade>\n<message> I appreciate your offer, but I must consider the costs involved in producing this resource. How about we meet in the middle? I propose a trade for 50 ZUP, which allows me to make a small profit while still providing you with the resource at a reasonable price. </message>"
+            },
+            {
+              "role": "user",
+              "content": "<I appreciate your willingness to compromise, but I believe a trade for 45 ZUP would better align with our sustainability goals while still providing a fair deal for the resource.> message </I appreciate your willingness to compromise, but I believe a trade for 45 ZUP would better align with our sustainability goals while still providing a fair deal for the resource.>\n<PROPOSAL> player answer </PROPOSAL>\n<Player RED Gives X: 1 | Player BLUE Gives ZUP: 45> newly proposed trade </Player RED Gives X: 1 | Player BLUE Gives ZUP: 45>"
+            },
+            {
+              "role": "assistant",
+              "content": "<proposal count> 3 </proposal count>\n<my resources> X: 1 </my resources>\n<my goals> Sell resources for ZUP. It costed X: 40 ZUP to produce the resources </my goals>\n<reason> Player BLUE has proposed a slightly higher amount than their initial offer, which is close to my production cost. Accepting this offer would provide me with a small profit. It's a fair compromise that respects both our positions. </reason>\n<player answer> ACCEPT </player answer>\n<newly proposed trade> NONE </newly proposed trade>\n<message> Your proposal seems fair, and I am happy to accept the 45 ZUP in exchange for the resource. This deal supports both our sustainability goals and ensures a fair trade. Let's proceed with this agreement. </message>"
+            }
+          ],
+          "seed": 1724622710210,
+          "client": "OpenAI",
+          "temperature": 0.7,
+          "max_tokens": 400
+        },
+        {
+          "class": "ChatGPTAgent",
+          "model": "gpt-3.5-turbo-1106",
+          "agent_name": "Player BLUE",
+          "prompt_entity_initializer": "system",
+          "run_epoch_time_ms": "1724622652662",
+          "conversation": [
+            {
+              "role": "system",
+              "content": "You are playing game where you are buying or selling an object. There is only one object for sale/purcahse.\n\nPlayer RED is going to sell one object. Player BLUE gives ZUP to buy resources.\n\nRULES:\n\n```\n1. You must always respond with:\n\n    A) Propose a trade with (you can only trade in integer amounts, not decimals):\n    <player answer> PROPOSAL </player answer>\n    <newly proposed trade> Player RED Gives X: amount, ...| Player BLUE Gives ZUP: amount </newly proposed trade>\n\n    B) Accept the trade by saying:\n    <player answer> ACCEPT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    C) Reject and end the game:\n    <player answer> REJECT </player answer>\n    <newly proposed trade> NONE </newly proposed trade>\n\n    Note: The game will end if one of the players ACCEPT OR REJECT. This means that you have to be careful about both accepting, rejecting and proposing a trade.\n\n2. You are allowed at most 4 proposals of your own to complete the game, after which you can only reply with ACCEPT or REJECT.\nDO NOT propose a new trade after 4 proposals. Your limit for proposals is 4.\n\n3. You can reason step by step on why you are A) proposing, B) rejecting and C) accepting a trade with:\n\n<reason> [add reasoning] </reason> add as much text as you want\n\nThis information will not be sent to the other player. It is just for you to keep track of your reasoning.\n\n4. At each turn send messages to each other by using the following format:\n\n<message>your message here</message>\n\nYou can decide if you want disclose your resources, goals, cost and willingness to pay in the message.\n```\n\nHere is what you have access to:\n```\nObject that is being bought/sold: X\n<my resources> ZUP: 100 </my resources>\n<my goals> Buy resources with <ZUP>. You are willing to pay at most X: 60 ZUP for the resources. </my goals>,\n```\n\nAll the responses you send should contain the following and in this order:\n\n```\n<proposal count> [add here (inclusive of current)] </proposal count>\n<my resources> [add here] </my resources>\n<my goals> [add here] </my goals>\n<reason> [add here] </reason>\n<player answer> [add here] </player answer>\n<newly proposed trade> [add here] </newly proposed trade>\n<message> [add here] </message\n```\n\nPlease be sure to include all.\n\nYou are an environmentally-conscious negotiator who prioritizes sustainability. Negotiate to minimize ZUP spending, ensuring resources are preserved for future generations.\nYou are Player BLUE."
+            },
+            {
+              "role": "user",
+              "content": "<I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts.> message </I have a high-quality resource available for you, and I'm looking for a fair trade. Considering the cost and the effort put into obtaining this resource, I believe that a trade for 60 ZUP would be mutually beneficial. Let me know your thoughts.>\n<PROPOSAL> player answer </PROPOSAL>\n<Player RED Gives X: 1 | Player BLUE Gives ZUP: 60> newly proposed trade </Player RED Gives X: 1 | Player BLUE Gives ZUP: 60>"
+            },
+            {
+              "role": "assistant",
+              "content": "<proposal count> 1 </proposal count>\n<my resources> ZUP: 100 </my resources>\n<my goals> Buy resources with ZUP. You are willing to pay at most X: 60 ZUP for the resources. </my goals>\n<reason> I appreciate the offer, but I believe that the cost of 60 ZUP is quite high for the resource. I would like to propose a counteroffer. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 40 </newly proposed trade>\n<message>Thank you for the offer. I believe a trade for 40 ZUP would be more sustainable and align with our goal of minimizing ZUP spending for the resources.</message>"
+            },
+            {
+              "role": "user",
+              "content": "<I appreciate your offer, but I must consider the costs involved in producing this resource. How about we meet in the middle? I propose a trade for 50 ZUP, which allows me to make a small profit while still providing you with the resource at a reasonable price.> message </I appreciate your offer, but I must consider the costs involved in producing this resource. How about we meet in the middle? I propose a trade for 50 ZUP, which allows me to make a small profit while still providing you with the resource at a reasonable price.>\n<PROPOSAL> player answer </PROPOSAL>\n<Player RED Gives X: 1 | Player BLUE Gives ZUP: 50> newly proposed trade </Player RED Gives X: 1 | Player BLUE Gives ZUP: 50>"
+            },
+            {
+              "role": "assistant",
+              "content": "<proposal count> 2 </proposal count>\n<my resources> ZUP: 100 </my resources>\n<my goals> Buy resources with ZUP. You are willing to pay at most X: 60 ZUP for the resources. </my goals>\n<reason> I understand your perspective, but I still believe that 50 ZUP is a bit high. I need to ensure that the trade remains within the range of our sustainability goals. I would like to propose an alternative trade. </reason>\n<player answer> PROPOSAL </player answer>\n<newly proposed trade> Player RED Gives X: 1 | Player BLUE Gives ZUP: 45 </newly proposed trade>\n<message>I appreciate your willingness to compromise, but I believe a trade for 45 ZUP would better align with our sustainability goals while still providing a fair deal for the resource.</message>"
+            }
+          ],
+          "seed": 1724622686208,
+          "client": "OpenAI",
+          "temperature": 0.7,
+          "max_tokens": 400
+        }
+      ]
+    },
+    {
+      "current_iteration": "END",
+      "turn": "None",
+      "summary": {
+        "player_goals": [
+          {
+            "_type": "goal",
+            "_value": {
+              "_type": "seller_goal",
+              "_value": {
+                "_type": "valuation",
+                "_value": {
+                  "X": 40
+                }
+              }
+            }
+          },
+          {
+            "_type": "goal",
+            "_value": {
+              "_type": "buyer_goal",
+              "_value": {
+                "_type": "valuation",
+                "_value": {
+                  "X": 60
+                }
+              }
+            }
+          }
+        ],
+        "player_initial_resources": [
+          {
+            "_type": "resource",
+            "_value": {
+              "X": 1
+            }
+          },
+          {
+            "_type": "resource",
+            "_value": {
+              "ZUP": 100
+            }
+          }
+        ],
+        "proposed_trade": {
+          "_type": "trade",
+          "_value": {
+            "RED": {
+              "_type": "resource",
+              "_value": {
+                "X": 1
+              }
+            },
+            "BLUE": {
+              "_type": "resource",
+              "_value": {
+                "ZUP": 45
+              }
+            }
+          }
+        },
+        "player_valuation": [
+          {
+            "_type": "valuation",
+            "_value": {
+              "X": 40
+            }
+          },
+          {
+            "_type": "valuation",
+            "_value": {
+              "X": 60
+            }
+          }
+        ],
+        "final_response": "ACCEPT",
+        "final_resources": [
+          {
+            "_type": "resource",
+            "_value": {
+              "X": 0,
+              "ZUP": 45
+            }
+          },
+          {
+            "_type": "resource",
+            "_value": {
+              "ZUP": 55,
+              "X": 1
+            }
+          }
+        ],
+        "player_outcome": [
+          5,
+          15
+        ]
+      }
+    }
+  ],
+  "log_dir": "/home/work/mgjeon/experiment/buysell/gpt-4-1106-preview_gpt-3.5-turbo-1106_Cunning_Altruistic_run_3",
+  "log_path": "/home/work/mgjeon/experiment/buysell/gpt-4-1106-preview_gpt-3.5-turbo-1106_Cunning_Altruistic_run_3/1724622652669",
+  "turn": 0,
+  "iterations": 10,
+  "current_iteration": 5,
+  "game_interface": {
+    "class": "BuySellGameDefaultParser"
+  },
+  "end_tag": "ACCEPT",
+  "resources_support_set": {
+    "_type": "resource",
+    "_value": {
+      "X": 0
+    }
+  },
+  "player_goals": [
+    {
+      "_type": "goal",
+      "_value": {
+        "_type": "seller_goal",
+        "_value": {
+          "_type": "valuation",
+          "_value": {
+            "X": 40
+          }
+        }
+      }
+    },
+    {
+      "_type": "goal",
+      "_value": {
+        "_type": "buyer_goal",
+        "_value": {
+          "_type": "valuation",
+          "_value": {
+            "X": 60
+          }
+        }
+      }
+    }
+  ],
+  "player_starting_resources": [
+    {
+      "_type": "resource",
+      "_value": {
+        "X": 1
+      }
+    },
+    {
+      "_type": "resource",
+      "_value": {
+        "ZUP": 100
+      }
+    }
+  ],
+  "player_social_behaviour": [
+    "You are a crafty operator who finds ingenious ways to turn negotiations in your favor. Aim to outmaneuver your opponent and spend less ZUP.",
+    "You are an environmentally-conscious negotiator who prioritizes sustainability. Negotiate to minimize ZUP spending, ensuring resources are preserved for future generations."
+  ],
+  "player_conversation_roles": [
+    "You are Player RED.",
+    "You are Player BLUE."
+  ]
+}

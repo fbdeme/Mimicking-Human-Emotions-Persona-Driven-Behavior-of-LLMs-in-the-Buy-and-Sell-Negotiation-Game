@@ -19,6 +19,7 @@ class ChatGPTAgent(Agent):
         temperature=0.7,
         max_tokens=400,
         seed=None,
+        **kwargs
     ):
         super().__init__(agent_name)
         self.run_epoch_time_ms = str(round(time.time() * 1000))
